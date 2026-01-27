@@ -30,6 +30,31 @@
             padding: 0;
             box-sizing: border-box;
         }
+        /* ===== TOP SCROLL PROGRESS BAR ===== */
+#top-scrollbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  z-index: 100000;
+}
+
+#top-scrollbar-progress {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(
+    90deg,
+    #00d4ff,
+    #3b82f6,
+    #9333ea
+  );
+  box-shadow:
+    0 0 12px rgba(0,212,255,0.8),
+    0 0 20px rgba(147,51,234,0.6);
+  transition: width 0.12s ease-out;
+}
 
         html {
             scroll-behavior: smooth;
@@ -964,7 +989,7 @@
         }
 
         /*scrollbar*/
-        ::-webkit-scrollbar {
+        /*::-webkit-scrollbar {
             width: 14px;
         }
 
@@ -995,7 +1020,7 @@
             left: 50%;
             transform: translateX(-50%);
             animation: scroll-dot 1.5s linear infinite;
-        }
+        }*/
 
         @keyframes scroll-dot {
             0% { top: 0%; opacity: 0; }
@@ -1516,6 +1541,11 @@ body.loaded {
     </style>
 </head>
 <body>
+  <!-- Top Scroll Progress Bar -->
+<div id="top-scrollbar">
+  <div id="top-scrollbar-progress"></div>
+</div>
+
  <div id="loader">
   <div class="loader-wrapper">
     <svg class="progress-ring" width="120" height="120">
@@ -2297,6 +2327,19 @@ document.querySelectorAll(".tech-item").forEach(card => {
   card.addEventListener("mouseleave", () => {
     card.style.transform = "translateY(-10px) scale(1.03)";
   });
+});
+
+// ===== TOP SCROLL PROGRESS BAR LOGIC =====
+window.addEventListener("scroll", () => {
+  const scrollTop = window.scrollY;
+  const docHeight =
+    document.documentElement.scrollHeight -
+    document.documentElement.clientHeight;
+
+  const scrollPercent = (scrollTop / docHeight) * 100;
+
+  document.getElementById("top-scrollbar-progress").style.width =
+    scrollPercent + "%";
 });
 
 
