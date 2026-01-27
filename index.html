@@ -848,6 +848,29 @@
             animation: energyMove 10s linear infinite;
             z-index: 0;
         }
+      /* Put actual content above everything */
+.event-highlights {
+  position: relative;
+  z-index: 0;
+}
+
+.event-highlights > * {
+  position: relative;
+  z-index: 2;   /* cards + title above effects */
+}
+
+/* Background blobs */
+.event-highlights::before,
+.event-highlights::after {
+  z-index: 1;           /* behind cards */
+  pointer-events: none; /* 👈 stops mouse blocking */
+}
+
+/* Energy line */
+.event-highlights .energy-line {
+  z-index: 1;
+  pointer-events: none; /* 👈 stops mouse blocking */
+}
 
         @keyframes gradientFlow {
             0% { background-position: 0% 50%; }
