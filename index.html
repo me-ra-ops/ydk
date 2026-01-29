@@ -1242,8 +1242,8 @@ body.loaded .hero-logo-center {
     
 /* BIGGER LOGO */
 .big-logo {
-  width: 420px;    
-  height: 420px;
+  width: min(80vw, 420px);
+  height: min(80vw, 420px);
 }
 
 
@@ -1278,10 +1278,17 @@ body.loaded .hero-logo-center {
 }
 @media (max-width: 480px) {
   .big-logo {
-    width: 380px;
-    height: 380px;
+    width: 88vw;
+    height: 88vw;
   }
 }
+@media (max-width: 480px) {
+  .hero-logo-center {
+    transform: translateY(30px);
+  }
+}
+
+
 }
 /* LEFT — YAGNA */
 .hero-left {
