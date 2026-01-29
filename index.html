@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content=" Yagna Dhruva">
     <meta name="keywords" content="yd26, yagna, dhruva, lbsitw, lbs, techno-cultural fest">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --space-black: #020617;
@@ -69,23 +72,61 @@
         }
 
         /* Header & Navigation */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(2, 6, 23, 0.9);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
-            padding: 1.2rem 5%;
-            transition: var(--transition-smooth);
-        }
+       header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+
+  background: linear-gradient(
+    180deg,
+    rgba(15, 23, 42, 0.55),
+    rgba(2, 6, 23, 0.35)
+  );
+
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+
+  border-bottom: 1px solid rgba(0, 212, 255, 0.18);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    0 8px 30px rgba(0,0,0,0.35);
+
+  padding: 1.2rem 5%;
+  transition: var(--transition-smooth);
+}
+
 
         .header-scrolled {
-            padding: 0.8rem 5%;
-            background: rgba(2, 6, 23, 0.95);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
+  padding: 0.8rem 5%;
+  background: linear-gradient(
+    180deg,
+    rgba(2, 6, 23, 0.75),
+    rgba(2, 6, 23, 0.6)
+  );
+
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.06),
+    0 12px 40px rgba(0,0,0,0.55);
+}
+
+@keyframes logoBreathSoft {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.035);
+  }
+}
+.logo-assembly {
+  animation: logoBreathSoft 5.5s ease-in-out infinite;
+  animation-delay: 2.2s; 
+}
+
+
 
         nav {
             display: flex;
@@ -100,14 +141,15 @@
         }
 
         .logo-text {
-            font-size: 1.8rem;
-            font-weight: 900;
-            background: var(--gradient-text);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+    font-family: 'Orbitron', sans serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 0;
+    text-transform: uppercase;
         }
 
         .nav-links {
@@ -175,10 +217,15 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            padding: 0 5%;
+            padding: 0;
             overflow: hidden;
             background: var(--gradient-cosmic);
         }
+        html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 
         .hero::before {
             content: '';
@@ -240,7 +287,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 0 40px rgba(0, 212, 255, 0.3);
             letter-spacing: 3px;
         }
 
@@ -292,7 +338,6 @@
         .btn-primary {
             background: var(--gradient-neon);
             color: white;
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
         }
 
         .btn-secondary {
@@ -303,7 +348,6 @@
 
         .hero-btn:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.6);
         }
 
         .btn-primary:hover {
@@ -360,19 +404,6 @@
             animation-delay: 10s;
             animation-duration: 20s;
         }
-
-<<<<<<< HEAD
-=======
-        /* Particle Background */
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 3;
-            inset: 0;
-            pointer-events: none;
-        }
->>>>>>> d41abc7b7eac35aafb9d9b94b3b24ae6c03bff3a
 
         /* Event Highlights */
         .event-highlights {
@@ -567,8 +598,7 @@
         }
 
         .about-content {
-        display: grid;
-        grid-template-columns: 1.2fr 1fr;
+         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 40px;
         align-items: center;
         }
@@ -582,7 +612,7 @@
 
         .about-stats {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
         gap: 20px;
         }
 
@@ -700,18 +730,6 @@
                 transform: translateY(0) rotate(360deg) translateX(0);
             }
         }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(1.1);
-                opacity: 0.8;
-            }
-        }
-
         /* Responsive Design */
         @media (max-width: 1200px) {
             .hero-title {
@@ -764,18 +782,17 @@
                 right: 0;
             }
              
-<<<<<<< HEAD
+
             .hero-title { font-size: var(--fs-hero); }
 .hero-subtitle { font-size: var(--fs-sub); }
 .section-title { font-size: var(--fs-section); }
 .hero-description { font-size: var(--fs-body); }
 
-=======
             .hero-title {
                 font-size: 3rem;
             }
             
->>>>>>> d41abc7b7eac35aafb9d9b94b3b24ae6c03bff3a
+
             .hero-subtitle {
                 font-size: 1.5rem;
             }
@@ -798,6 +815,7 @@
             .countdown-number {
                 font-size: 2.5rem;
             }
+            
         }
 
         @media (max-width: 576px) {
@@ -965,12 +983,6 @@
             transform: rotate(8deg) scale(1.2);
         }
 
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
         .highlight-card::after {
             content: '';
             position: absolute;
@@ -1056,98 +1068,10 @@
             transform: translateX(-50%);
             animation: scroll-dot 1.5s linear infinite;
         }*/
-
-        @keyframes scroll-dot {
-            0% { top: 0%; opacity: 0; }
-            50% { top: 50%; opacity: 1; }
-            100% { top: 100%; opacity: 0; }
-        }
 /* ===== HARD-CUT LUXURY PROGRESS LOADER ===== */
-#loader {
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at center, #0a1a3d 0%, #020617 70%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 99999;
-}
-
-/* Wrapper (logo + ring) */
-.loader-wrapper {
-  position: relative;
-  width: 120px;
-  height: 120px;
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-/* Phase 1: logo & ring vanish */
-#loader.vanish .loader-wrapper {
-  opacity: 0;
-  transform: scale(0.9);
-}
-
-/* Phase 2: whole loader removed instantly */
-#loader.hidden {
-  display: none;
-}
-
-.loader-logo-img {
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 70px;
-  height: 70px;
-  object-fit: contain;
-}
-
-/* Progress Ring */
-.progress-ring {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: rotate(-90deg);
-}
-
-.progress-ring-bg {
-  fill: none;
-  stroke: rgba(255, 255, 255, 0.12);
-  stroke-width: 3;
-}
-
-.progress-ring-fill {
-  fill: none;
-  stroke: #256AF8;
-  stroke-width: 3;
-  stroke-linecap: round;
-  stroke-dasharray: 339;
-  stroke-dashoffset: 339;
-  transition: stroke-dashoffset 2.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Page fade-in */
-body.loading {
-  overflow: hidden;
-}
-
-body.loaded {
-  animation: pageFadeIn 2.5s ease forwards;
-}
-
-@keyframes pageFadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
 /* ===== Technical Events Popup ===== */
 
-<<<<<<< HEAD
-.about-content {
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
 
-.about-stats {
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-}
 .hero-btn {
   width: auto;
   min-width: 200px;
@@ -1160,256 +1084,299 @@ body.loaded {
   }
 }
 
-=======
-.tech-popup.show {
-  display: flex;
-}
+/* ===== Event Detail Mini Modal ===== */
 
-.tech-popup-box {
-  background: rgba(15, 23, 42, 0.96);
-  border: 1px solid rgba(59,130,246,0.35);
-  border-radius: 10px;
-  width: 92%;
-  max-width: 2000px;
-  height: 85vh;                 /* ✅ LIMIT HEIGHT */
-  padding: 2.5rem;
+section {
+  scroll-margin-top: 90px;
+}
+.logo-assembly {
   position: relative;
-  animation: popupIn 0.45s ease forwards;
+  width: 220px;
+  height: 220px;
+  margin: 0 auto 2.5rem;
+}
+
+.logo-part {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+
+  opacity: 0;
+  filter: blur(6px);
+  animation: logoAssembleSmooth 2.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(var(--i) * 0.12s);
+}
+
+/* directions */
+.from-left   { --tx: -240px; }
+.from-right  { --tx: 240px; }
+.from-top    { --ty: -240px; }
+.from-bottom { --ty: 240px; }
+
+@keyframes logoAssembleSmooth {
+  0% {
+    opacity: 0;
+    transform: translate(var(--tx, 0), var(--ty, 0)) scale(0.85);
+    filter: blur(10px);
+  }
+
+  70% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1.05); /* subtle overshoot */
+    filter: blur(2px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+    filter: blur(0);
+  }
+}
+body.loaded .hero-logo-center {
+  animation: logoFadeOut 1.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: 2.6s;
+}
+
+@keyframes logoFadeOut {
+  to {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+}
+
+
+/* ===== SPLIT HERO ===== */
+.hero-layout {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  width: 100%;
+  z-index: 5;
+}
+/* Optical text centering fix */
+.hero-left .hero-split-title {
+  transform: translateX(-4%);
+}
+
+.hero-right .hero-split-title {
+  transform: translateX(4%);
+}
+
+
+/* LEFT / RIGHT */
+.hero-left,
+.hero-right {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
 }
 
-
-@keyframes popupIn {
-  from { opacity: 0; transform: scale(0.92) translateY(20px); }
-  to   { opacity: 1; transform: scale(1) translateY(0); }
+.hero-right {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(2,6,23,0.4),
+      rgba(2,6,23,0.9)
+    ),;
+  background-size: cover;
+  background-position: center;
 }
 
-.tech-popup-box h2 {
-  text-align: center;
-  margin-bottom: 2rem;
+/* TEXT */
+.hero-split-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(3.2rem, 6.5vw, 7.5rem); /* 👈 reduced size */
+  font-weight: 800;                       /* 👈 more bold */
+  letter-spacing: 0.16em;
   background: var(--gradient-text);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.tech-popup-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 160px;
-  gap: 2rem;
-  overflow-y: auto;
-  padding-right: 0.75rem;
-  flex: 1;
-  max-height: 100%;
-  scroll-behavior: smooth;
-  overscroll-behavior: contain;
-  -webkit-overflow-scrolling: touch;
 
-  scrollbar-width: none;        /* Firefox */
-  -ms-overflow-style: none;     /* IE 10+ */
+
+.hero-split-title.outlined {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2px var(--electric-blue);
+  background: none;
 }
 
-/* Chrome, Edge, Safari */
-.tech-popup-list::-webkit-scrollbar {
-  display: none;
-}
-
-
-
-.tech-item {
-  background: rgba(59,130,246,0.15);
-  border: 1px solid rgba(59,130,246,0.3);
-  border-radius: 0px;
-  padding: 1.2rem;
-  text-align: center;
-  transition: 0.25s ease;
-}
-
-.tech-item:hover {
-  background: rgba(0,212,255,0.25);
-  transform: translateY(-6px);
-}
-.tech-item::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(0,212,255,0.6),
-    rgba(147,51,234,0.6),
-    transparent
-  );
-  opacity: 0;
-  transition: opacity 0.45s ease;
-  z-index: 1;
-}
-
-.tech-item:hover::before {
-  opacity: 1;
-}
-
-.tech-popup-close {
-  position: absolute;
-  top: 14px;
-  right: 18px;
-  font-size: 2rem;
-  cursor: pointer;
-  color: var(--electric-blue);
-}
-.tech-popup-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 160px;
-  gap: 2rem;
-}
-
-/* DEFAULT CARD */
-.tech-item {
-  position: relative;
-  overflow: hidden;
-  background: #000;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-/* SIZE VARIANTS */
-.tech-item.wide {
-  grid-column: span 2;
-}
-
-.tech-item.tall {
-  grid-row: span 2;
-}
-
-.tech-item.big {
-  grid-column: span 2;
-  grid-row: span 2;
-}
-
-/* HOVER */
-.tech-item:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 25px 40px rgba(0,0,0,0.6);
-}
-
-/* IMAGE */
-.tech-item img {
+/* ===== CENTER LOGO ===== */
+.hero-logo-center {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.7);
-}
-
-/* OVERLAY */
-.tech-item::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0,0,0,0.9),
-    rgba(0,0,0,0.2)
-  );
-}
-
-/* TEXT */
-.tech-item h3,
-.tech-item p {
-  position: absolute;
-  left: 1.5rem;
-  right: 1.5rem;
-  z-index: 2;
-}
-
-.tech-item h3 {
-  bottom: 3rem;
-}
-
-.tech-item p {
-  bottom: 1.5rem;
-  font-size: 0.8rem;
-  opacity: 0.8;
-}
-@media (max-width: 980px) {
-  .tech-popup-list {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .tech-item.wide,
-  .tech-item.big {
-    grid-column: span 2;
-  }
-}
-
-@media (max-width: 600px) {
-  .tech-popup-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 180px;
-  gap: 2rem;
-  overflow-y: auto;
-  padding-right: 0.75rem;
-  flex: 1;
-
-  scroll-snap-type: y mandatory;
-}
-
-.tech-item {
-  scroll-snap-align: start;
-}
-
-
-  .tech-item,
-  .tech-item.wide,
-  .tech-item.tall,
-  .tech-item.big {
-    grid-column: span 1;
-    grid-row: span 1;
-  }
-}
-
-
-@media screen and (max-width: 600px) {
-  #DHRUVA .tech-popup-list {
-    grid-template-columns: 1fr;
-  }
-}
-/* ===== Event Detail Mini Modal ===== */
-.event-detail-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(2, 6, 23, 0.65);
-  backdrop-filter: blur(10px);
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000000;
+  pointer-events: none;
+  z-index: 20;
+  transform: translateX(-30px);
+}
+@media (max-width: 768px){
+ .hero-logo-center{
+    transform: translateX(0px);
+ }
+}
+@media (max-width: 480px){
+ .hero-logo-center{
+    transform: translateX(0px);
+ }
+}
+    
+/* BIGGER LOGO */
+.big-logo {
+  width: 420px;    
+  height: 420px;
 }
 
-.event-detail-modal.show {
+
+/* Fade logo after load (optional) */
+body.loaded .hero-logo-center {
+  animation: logoFadeOut 1.2s ease forwards;
+  animation-delay: 6.5s; /* 👈 allows breathing first */
+}
+
+
+@keyframes logoFadeOut {
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+@media (max-width: 768px) {
+  .hero-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-left,
+  .hero-right {
+    min-height: 50vh;
+  }
+
+  @media (max-width: 768px) {
+  .big-logo {
+    width: 260px;
+    height: 260px;
+  }
+}
+
+}
+/* LEFT — YAGNA */
+.hero-left {
   display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(2,6,23,0.25),
+      rgba(2,6,23,0.55)
+    ),
+    url("yagna-bg.jpeg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  filter: brightness(0.8) contrast(1.05);
 }
 
-.event-detail-box {
-  width: 78%;
-  max-width: 480px;
-  background: linear-gradient(145deg, rgba(15,23,42,0.95), rgba(2,6,23,0.95));
-  border-radius: 1px;
-  border: 1px solid rgba(0,212,255,0.35);
-  overflow: visible;
-  animation: popupIn 0.45s cubic-bezier(0.25,1,0.5,1) forwards;
-  box-shadow:
-    0 20px 60px rgba(0,0,0,0.7),
-    0 0 40px rgba(0,212,255,0.2);
-    min-height: 520px; 
-}
->>>>>>> d41abc7b7eac35aafb9d9b94b3b24ae6c03bff3a
+/* RIGHT — DHRUVA */
+.hero-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-section {
-  scroll-margin-top: 90px;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(2,6,23,0.2),
+      rgba(2,6,23,0.5)
+    ),
+    url("dhruva-bg.jpeg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  filter: brightness(0.9) contrast(1.08);
+}
+/* TEXT ENTRY ANIMATIONS */
+@keyframes textFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-120px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes textFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(120px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Apply only to text */
+.hero-left .hero-split-title {
+  opacity: 0;
+  animation: textFromLeft 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.6s;
+}
+
+.hero-right .hero-split-title {
+  opacity: 0;
+  animation: textFromRight 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.6s;
+}
+.tagline {
+font-family: "Monsieur La Doulaise", cursive;
+  font-size: 3rem;
+    background: linear-gradient(
+    90deg,
+    #3b82f6,   /* royal blue */
+    #00d4ff    /* electric blue */
+  );
+-webkit-text-stroke: 0.6px rgba(0, 212, 255, 0.45);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+@media (max-width: 768px) {
+  .tagline {
+    font-size: 2rem;
+    top: 15px;
+    opacity: 0.75;
+    font-weight: 400;
+    -webkit-text-stroke: 0.6px rgba(0, 212, 255, 0.45);
+  }
+}
+@media (max-width: 480px) {
+  .tagline {
+    font-size: 1.8rem;
+    top: 18px;
+    left: 225px;
+    letter-spacing: 0.02em;
+    -webkit-text-stroke: 0.6px rgba(0, 212, 255, 0.45);
+  }
 }
 
     </style>
@@ -1420,16 +1387,6 @@ section {
   <div id="top-scrollbar-progress"></div>
 </div>
 
- <div id="loader">
-  <div class="loader-wrapper">
-    <svg class="progress-ring" width="120" height="120">
-      <circle class="progress-ring-bg" cx="60" cy="60" r="54"></circle>
-      <circle class="progress-ring-fill" cx="60" cy="60" r="54"></circle>
-    </svg>
-    <img src="yd-logo.png" alt="Yagna Dhruva Logo" class="loader-logo-img">
-  </div>
-</div>
-
 
     <!-- Header -->
     <header id="header">
@@ -1437,7 +1394,8 @@ section {
             <div class="logo">
                 <div class="logo-text">YD '26</div>
             </div>
-            
+            <div class="tagline">Instigate a change</div>
+
             <div class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
             </div>
@@ -1464,24 +1422,39 @@ section {
         
         <!-- Particle Background -->
         
-        <div class="hero-content">
-            <div class="title-container">
-                <h1 class="hero-title">YAGNA DHRUVA 2026</h1>
-                <h2 class="hero-subtitle">LBS Institute of Technology for Women</h2>
-            </div>
-            
-            <p class="hero-description">
-            </p>
-            
-            <div class="hero-buttons">
-                <a href="#events" class="hero-btn btn-primary">
-                    <i class="fas fa-calendar-alt"></i> View Events
-                </a>
-                <a href="#register" class="hero-btn btn-secondary">
-                    <i class="fas fa-user-plus"></i> Register Now-link
-                </a>
-            </div>
-        </div>
+<div class="hero-layout">
+
+  <!-- CENTER LOGO (over everything) -->
+  <div class="hero-logo-center">
+    <div class="logo-assembly big-logo">
+      <img src="horz1.svg" class="logo-part from-left" style="--i:1">
+      <img src="horz-mid.svg" class="logo-part from-right" style="--i:2">
+      <img src="horz3.svg" class="logo-part from-left" style="--i:3">
+
+      <img src="dot-top.svg" class="logo-part from-top" style="--i:4">
+      <img src="dot-mid.svg" class="logo-part from-top" style="--i:5">
+      <img src="dot-low.svg" class="logo-part from-bottom" style="--i:6">
+
+      <img src="spiral.svg" class="logo-part from-left" style="--i:7">
+
+      <img src="vert1.svg" class="logo-part from-bottom" style="--i:8">
+      <img src="vert-mid.svg" class="logo-part from-top" style="--i:9">
+      <img src="vert3.svg" class="logo-part from-bottom" style="--i:10">
+    </div>
+  </div>
+
+  <!-- LEFT -->
+  <div class="hero-left">
+    <h1 class="hero-split-title">YAGNA</h1>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="hero-right">
+    <h1 class="hero-split-title outlined">DHRUVA</h1>
+  </div>
+
+</div>
+
     </section>
 
     <!-- Event Highlights -->
@@ -1600,252 +1573,6 @@ section {
             <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
         </div>   
     </footer>
-<<<<<<< HEAD
-=======
-    <!-- ===== Technical Events Popup ===== -->
-<div id="techPopup" class="tech-popup">
-  <div class="tech-popup-box">
-    <span class="tech-popup-close">&times;</span>
-    <h2>Technical Events</h2>
-
-    <div class="tech-popup-list">
-    <div class="tech-item">
-      <img src="images/pic01.jpg" alt="">
-      <h3>Game Design 101</h3>
-      <p>Game designing workshop</p>
-    </div>
-
-    <div class="tech-item tall">
-      <img src="images/pic02.jpg" alt="">
-      <h3>Ideaforge</h3>
-      <p>Pitch your startup ideas</p>
-    </div>
-
-    <div class="tech-item">
-      <img src="images/pic03.jpg" alt="">
-      <h3>Sentinel Slam</h3>
-      <p>Esports competition</p>
-    </div>
-
-    <div class="tech-item">
-      <img src="images/pic04.jpg" alt="">
-      <h3>Ethical Hacking</h3>
-      <p>Hands-on cybersecurity</p>
-    </div>
-
-    <div class="tech-item">
-      <img src="images/pic05.jpg" alt="">
-      <h3>Robo Soccer</h3>
-      <p>Robotics competition</p>
-    </div>
-
-    <div class="tech-item">
-      <img src="images/pic06.jpg" alt="">
-      <h3>Robo War</h3>
-      <p>Battle of bots</p>
-    </div>
-	
-    <div class="tech-item">
-      <img src="images/pic01.jpg" alt="">
-      <h3>Game Design 101</h3>
-      <p>Game designing workshop</p>
-    </div>
-
-    <div class="tech-item tall">
-      <img src="images/pic02.jpg" alt="">
-      <h3>Ideaforge</h3>
-      <p>Pitch your startup ideas</p>
-    </div>
-
-    <div class="tech-item tall">
-      <img src="images/pic03.jpg" alt="">
-      <h3>Sentinel Slam</h3>
-      <p>Esports competition</p>
-    </div>
-
-    <div class="tech-item">
-      <img src="images/pic04.jpg" alt="">
-      <h3>Ethical Hacking</h3>
-      <p>Hands-on cybersecurity</p>
-    </div>
-
-    <div class="tech-item">
-      <img src="images/pic05.jpg" alt="">
-      <h3>Robo Soccer</h3>
-      <p>Robotics competition</p>
-    </div>
-
-    <div class="tech-item">
-      <img src="images/pic06.jpg" alt="">
-      <h3>Robo War</h3>
-      <p>Battle of bots</p>
-    </div>
-	
-    <div class="tech-item">
-      <img src="images/pic01.jpg" alt="">
-      <h3>Game Design 101</h3>
-      <p>Game designing workshop</p>
-    </div>
-
-    <div class="tech-item">
-      <img src="images/pic02.jpg" alt="">
-      <h3>Ideaforge</h3>
-      <p>Pitch your startup ideas</p>
-    </div>
-
-    <div class="tech-item">
-      <img src="images/pic03.jpg" alt="">
-      <h3>Sentinel Slam</h3>
-      <p>Esports competition</p>
-    </div>
-
-    <div class="tech-item">
-      <img src="images/pic04.jpg" alt="">
-      <h3>Ethical Hacking</h3>
-      <p>Hands-on cybersecurity</p>
-    </div>
-
-    <div class="tech-item tall">
-      <img src="images/pic05.jpg" alt="">
-      <h3>Robo Soccer</h3>
-      <p>Robotics competition</p>
-    </div>
-
-    <div class="tech-item">
-      <img src="images/pic06.jpg" alt="">
-      <h3>Robo War</h3>
-      <p>Battle of bots</p>
-    </div>
-	<div class="tech-item">
-      <img src="images/pic04.jpg" alt="">
-      <h3>Ethical Hacking</h3>
-      <p>Hands-on cybersecurity</p>
-    </div>
-	<div class="tech-item">
-      <img src="images/pic04.jpg" alt="">
-      <h3>Ethical Hacking</h3>
-      <p>Hands-on cybersecurity</p>
-    </div>
-  </div>
-  </div>
-</div>
-<!-- ===== Cultural Events Popup ===== -->
-<div id="culturalPopup" class="tech-popup">
-  <div class="tech-popup-box">
-    <span class="tech-popup-close cultural-close">&times;</span>
-    <h2>Cultural Events</h2>
-
-    <div class="tech-popup-list">
-      <div class="tech-item">
-        <img src="images/cult01.jpg" alt="">
-        <h3>Nritya Raga</h3>
-        <p>Solo classical dance</p>
-      </div>
-
-      <div class="tech-item tall">
-        <img src="images/cult02.jpg" alt="">
-        <h3>Battle of Bands</h3>
-        <p>Live music showdown</p>
-      </div>
-
-      <div class="tech-item">
-        <img src="images/cult03.jpg" alt="">
-        <h3>Footloose</h3>
-        <p>Group dance competition</p>
-      </div>
-
-      <div class="tech-item">
-        <img src="images/cult04.jpg" alt="">
-        <h3>Spotlight</h3>
-        <p>Solo singing contest</p>
-      </div>
-
-      <div class="tech-item">
-        <img src="images/cult05.jpg" alt="">
-        <h3>Ramp Rage</h3>
-        <p>Fashion show</p>
-      </div>
-
-      <div class="tech-item">
-        <img src="images/cult06.jpg" alt="">
-        <h3>Drama King</h3>
-        <p>Street play challenge</p>
-      </div>
-
-      <div class="tech-item">
-        <img src="images/cult07.jpg" alt="">
-        <h3>Beat Drop</h3>
-        <p>DJ night showdown</p>
-      </div>
-
-      <div class="tech-item tall">
-        <img src="images/cult08.jpg" alt="">
-        <h3>Verse Vault</h3>
-        <p>Poetry slam</p>
-      </div>
-
-      <div class="tech-item">
-        <img src="images/cult09.jpg" alt="">
-        <h3>Comic Riot</h3>
-        <p>Stand-up comedy</p>
-      </div>
-
-      <div class="tech-item">
-        <img src="images/cult10.jpg" alt="">
-        <h3>Lenscraft</h3>
-        <p>Photography contest</p>
-      </div>
-
-      <div class="tech-item">
-        <img src="images/cult11.jpg" alt="">
-        <h3>Art Attack</h3>
-        <p>Live painting</p>
-      </div>
-
-      <div class="tech-item">
-        <img src="images/cult12.jpg" alt="">
-        <h3>Reel Rush</h3>
-        <p>Short film challenge</p>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- ===== Event Detail Mini Modal ===== -->
-<div id="eventDetailModal" class="event-detail-modal">
-  <div class="event-detail-box">
-    <button class="event-nav-btn event-prev" id="eventPrevBtn">
-  <i class="fas fa-chevron-left"></i>
-</button>
-
-<button class="event-nav-btn event-next" id="eventNextBtn">
-  <i class="fas fa-chevron-right"></i>
-</button>
-
-    <span class="event-detail-close">&times;</span>
-
-    <div class="event-detail-media">
-      <img id="eventDetailImg" src="" alt="">
-    </div>
-
-    <div class="event-detail-content">
-      <h3 id="eventDetailTitle"></h3>
-      <p id="eventDetailDesc"></p>
-
-      <div class="event-detail-meta">
-        <span><i class="fas fa-clock"></i> 2–3 Hours</span>
-        <span><i class="fas fa-users"></i> Team / Solo</span>
-        <span><i class="fas fa-trophy"></i> Exciting Prizes</span>
-      </div>
-
-      <a href="#register" class="event-detail-btn">Register Now</a>
-    </div>
-  </div>
-</div>
-
-
-
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
->>>>>>> d41abc7b7eac35aafb9d9b94b3b24ae6c03bff3a
     <script>
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -1895,43 +1622,7 @@ section {
         });
         
         // Particle Background
-<<<<<<< HEAD
-=======
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 80, density: { enable: true, value_area: 800 } },
-                color: { value: "#00d4ff" },
-                shape: { type: "circle" },
-                opacity: { value: 0.5, random: true },
-                size: { value: 3, random: true },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: "#3b82f6",
-                    opacity: 0.2,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 2,
-                    direction: "none",
-                    random: true,
-                    straight: false,
-                    out_mode: "out",
-                    bounce: false
-                }
-            },
-            interactivity: {
-                detect_on: "window",
-                events: {
-                    onhover: { enable: true, mode: "repulse" },
-                    onclick: { enable: true, mode: "push" }
-                }
-            },
-            retina_detect: true
-        });
->>>>>>> d41abc7b7eac35aafb9d9b94b3b24ae6c03bff3a
-        
+      
         // Countdown Timer
         function updateCountdown() {
             // Set the event date (April 4, 2026)
@@ -1996,29 +1687,6 @@ section {
             el.style.animationDuration = `${20 + Math.random() * 10}s`;
         });
 // Hard-cut luxury loader
-document.body.classList.add("loading");
-
-window.addEventListener("load", () => {
-  const loader = document.getElementById("loader");
-  const ring = document.querySelector(".progress-ring-fill");
-
-  // Start ring fill
-  requestAnimationFrame(() => {
-    ring.style.strokeDashoffset = "0";
-  });
-
-  // Phase 1: logo + ring vanish
-  setTimeout(() => {
-    loader.classList.add("vanish");
-  }, 3000); // after ring fills
-
-  // Phase 2: loader removed instantly
-  setTimeout(() => {
-    loader.classList.add("hidden");
-    document.body.classList.remove("loading");
-    document.body.classList.add("loaded");
-  }, 3800); // vanish animation completes
-});
 // ===== Technical Events Popup Logic =====
 
 // ===== Magnetic Hover Tilt Effect =====
