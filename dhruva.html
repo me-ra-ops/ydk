@@ -151,22 +151,13 @@ nav {
     radial-gradient(circle at top left, rgba(0,212,255,0.18), transparent 60%),
     radial-gradient(circle at bottom right, rgba(59,130,246,0.18), transparent 60%),
     linear-gradient(180deg, #000000, #000000);
-<<<<<<< HEAD
+
 
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-}
-
-=======
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
     }
->>>>>>> 126e0b262361d1c58817779aeb99adb03ac324c2
-
     .hero-content {
       position: relative;
   z-index: 2;
@@ -537,7 +528,7 @@ nav {
 <!-- ===== HERO ===== -->
 <section class="hero">
   <div id="dhruva-particles"></div>
-  <img src="bg1.jpeg" id="bg1">
+  <!--<img src="bg1.jpeg" id="bg1">-->
   <div class="hero-content">
     <h1 class="hero-title">DHRUVA</h1>
     <h2 class="hero-subtitle">Cultural Events</h2>
@@ -758,28 +749,26 @@ const rows = 12;
 particlesJS("dhruva-particles", {
   particles: {
     number: {
-<<<<<<< HEAD
       value: 300,
-=======
-      value: 400,
->>>>>>> 126e0b262361d1c58817779aeb99adb03ac324c2
       density: { enable: true, value_area: 900 }
     },
 
-    color: {
-  value: ["#f9fafb", "#f1f5f9", "#e5e7eb"]
+color: {
+  value: ["#0b3c5d", "#0f172a", "#1e293b", "#f2eae4"  ]
 },
+
+
 
 
     shape: {
       type: "polygon",
       polygon: {
-        nb_sides: 6   
+        nb_sides: 7   
       }
     },
 
     opacity: {
-      value: 1,
+      value: 0.5,
       random: true
     },
 
@@ -790,7 +779,7 @@ particlesJS("dhruva-particles", {
 
     move: {
   enable: true,
-  speed: 0.5,        
+  speed: 0.6,        
   direction: "none",
   random: true,
   straight: false,
