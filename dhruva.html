@@ -6,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Bungee+Hairline&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -145,7 +147,7 @@ nav {
           background:
     radial-gradient(circle at top left, rgba(0,212,255,0.18), transparent 60%),
     radial-gradient(circle at bottom right, rgba(59,130,246,0.18), transparent 60%),
-    linear-gradient(180deg, #020617, #0a1a3d);
+    linear-gradient(180deg, #000000, #000000);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -160,6 +162,7 @@ nav {
 @media(max-width:480px){}
 @media(max-width:480px){}
     .hero-title {
+      font-family: "Orbitron", sans-serif;
       font-size: clamp(3rem, 6vw, 5rem);
       font-weight: 900;
       background: var(--gradient-text);
@@ -170,18 +173,20 @@ nav {
     }
 
     .hero-subtitle {
-      font-size: 1.5rem;
-.hero-subtitle {
-  color: var(--electric-blue);
-}
+      font-family: "Audiowide", sans-serif;
+      font-size: 3rem;
+      color: var(--electric-blue);
       letter-spacing: 2px;
       margin-bottom: 1.2rem;
+      font-weight: 250;
     }
 
     .hero-desc {
+      font-family: "Bungee Hairline", sans-serif;
       color: var(--moonlight);
-      font-size: 1.1rem;
+      font-size: 1.5rem;
       line-height: 1.8;
+      font-weight: 600;
     }
 
     /* ===== CULTURAL EVENTS ===== */
@@ -736,7 +741,7 @@ const rows = 12;
 particlesJS("dhruva-particles", {
   particles: {
     number: {
-      value: 200,
+      value: 400,
       density: { enable: true, value_area: 900 }
     },
 
@@ -778,6 +783,7 @@ particlesJS("dhruva-particles", {
   },
 
   interactivity: {
+    detect_on: "window",
     events: {
       onhover: {
         enable: true,
