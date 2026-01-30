@@ -7,7 +7,11 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <style>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Bungee+Hairline&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+
+<style>
     :root {
       --space-black: #020617;
       --deep-blue: #0a1a3d;
@@ -106,26 +110,32 @@
   }
 }
 .hero-title {
-  font-size: clamp(3rem, 6vw, 5rem);
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(3.2rem, 6.5vw, 7.5rem);
   font-weight: 900;
-  letter-spacing: 4px;
-  background: linear-gradient(90deg, #00d4ff, #3b82f6, #0a1a3d);
+  margin-bottom: 1rem;
+  letter-spacing: 0.16em;
+  background: var(--gradient-text);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 1rem;
 }
 
 .hero-subtitle {
-  font-size: 1.5rem;
+  font-family: "Audiowide", sans-serif;
+  font-size: 3rem;
   color: #00d4ff;
   letter-spacing: 2px;
   margin-bottom: 1.2rem;
+  font-weight: 250;
 }
 
 .hero-desc {
+  font-family: "Bungee Hairline", sans-serif;
   color: #cbd5e1;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   line-height: 1.8;
+  font-weight: 600;
+  
 }
 
     /* ===== EVENTS ===== */
