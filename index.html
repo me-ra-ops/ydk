@@ -1032,7 +1032,23 @@ body.nav-loaded header {
             50% { transform: scale(1.05); opacity: 0.5; }
             100% { transform: scale(0.95); opacity: 0.3; }
         }
-        /* Countdown transition */
+        /*countdown*/
+        .countdown-item {
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: transform 0.6s ease, box-shadow 0.6s ease, background 0.6s ease;
+            background: linear-gradient(120deg, rgba(0,212,255,0.1), rgba(147,51,234,0.1));
+            background-size: 200% 200%;
+            animation: cardGradient 6s ease infinite;
+            }
+
+            @keyframes cardGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+            }
+
         .countdown-item {
             transition:
                 transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
@@ -1060,6 +1076,21 @@ body.nav-loaded header {
 
         .countdown-item:hover .countdown-label {
             opacity: 0.85;
+        }
+        .countdown-item {
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: transform 0.6s ease, box-shadow 0.6s ease, background 0.6s ease;
+            background: linear-gradient(120deg, rgba(0,212,255,0.1), rgba(147,51,234,0.1));
+            background-size: 200% 200%;
+            animation: cardGradient 6s ease infinite;
+        }
+
+        @keyframes cardGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         /*scrollbar*/
@@ -1408,7 +1439,256 @@ font-family: "Monsieur La Doulaise", cursive;
     
   }
 }
+/*countdown background*/
+.countdown-section {
+    padding: 5rem 5%;
+    background: 
+        linear-gradient(135deg, #020617 0%, #0a1a3d 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
 
+/* Content must be on top */
+.countdown-title,
+.countdown-timer,
+.countdown-item,
+.countdown-number,
+.countdown-label {
+    position: relative;
+    z-index: 100 !important;
+}
+
+/* Countdown items with glass effect */
+.countdown-item {
+    background: rgba(15, 23, 42, 0.85) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 2px solid rgba(0, 212, 255, 0.3) !important;
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.5),
+        0 0 25px rgba(0, 212, 255, 0.2),
+        inset 0 0 15px rgba(0, 212, 255, 0.1) !important;
+}
+
+/* Make numbers pop */
+.countdown-number {
+    text-shadow: 
+        0 0 20px rgba(0, 212, 255, 0.9),
+        0 0 40px rgba(59, 130, 246, 0.6) !important;
+    color: var(--electric-blue) !important;
+    font-size: 3.5rem !important;
+}
+
+.clock-ring {
+    position: absolute;
+    border: 1px solid rgba(59, 130, 246, 0.25); 
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1; 
+    pointer-events: none;
+}
+
+.clock-ring:nth-child(1) { 
+    width: 300px; height: 300px; 
+    animation: rotateRing 80s linear infinite;
+    border-color: rgba(0, 212, 255, 0.2);
+}
+.clock-ring:nth-child(2) { 
+    width: 450px; height: 450px; 
+    animation: rotateRing 120s linear infinite reverse;
+    border-color: rgba(59, 130, 246, 0.15);
+}
+.clock-ring:nth-child(3) { 
+    width: 600px; height: 600px; 
+    animation: rotateRing 160s linear infinite;
+    border-color: rgba(147, 51, 234, 0.1);
+}
+
+@keyframes rotateRing {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+
+.clock-marker {
+    position: absolute;
+    width: 2px;
+    height: 15px;
+    background: rgba(0, 212, 255, 0.3); 
+    top: 50%;
+    left: 50%;
+    transform-origin: 0 0;
+    opacity: 0.5; 
+    z-index: 1;
+    pointer-events: none;
+}
+
+.clock-marker:nth-child(12n+1) {
+    height: 25px;
+    background: rgba(59, 130, 246, 0.4); 
+    opacity: 0.7;
+    width: 3px;
+}
+
+
+.clock-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background: rgba(0, 212, 255, 0.6); /* More visible */
+    border-radius: 50%;
+    box-shadow: 
+        0 0 25px rgba(0, 212, 255, 0.5),
+        0 0 50px rgba(59, 130, 246, 0.3);
+    animation: pulseCenter 3s ease-in-out infinite;
+    z-index: 1;
+    pointer-events: none;
+}
+
+@keyframes pulseCenter {
+    0%, 100% { 
+        transform: translate(-50%, -50%) scale(1); 
+        opacity: 0.8; 
+    }
+    50% { 
+        transform: translate(-50%, -50%) scale(1.4); 
+        opacity: 1; 
+        box-shadow: 
+            0 0 35px rgba(0, 212, 255, 0.7),
+            0 0 70px rgba(59, 130, 246, 0.4);
+    }
+}
+
+
+.time-digit {
+    position: absolute;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem; 
+    font-weight: 700;
+    color: rgba(59, 130, 246, 0.4); 
+    text-shadow: 
+        0 0 10px rgba(59, 130, 246, 0.4),
+        0 0 20px rgba(147, 51, 234, 0.2);
+    animation: floatDigit 20s infinite linear;
+    z-index: 1; /* BEHIND countdown */
+    pointer-events: none;
+    opacity: 0.5; /* Medium visibility */
+}
+
+@keyframes floatDigit {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 0.4;
+    }
+    25% {
+        opacity: 0.7; /* Brighter in middle */
+        transform: translate(60px, -40px) rotate(90deg);
+    }
+    50% {
+        opacity: 0.8; /* Brightest */
+        transform: translate(0, -80px) rotate(180deg);
+    }
+    75% {
+        opacity: 0.7;
+        transform: translate(-60px, -40px) rotate(270deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+        opacity: 0.4;
+    }
+}
+
+/* Outer circle/ring */
+.clock-outer-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 700px;
+    border: 2px solid rgba(147, 51, 234, 0.15);
+    border-radius: 50%;
+    z-index: 1;
+    pointer-events: none;
+    animation: outerRingPulse 8s ease-in-out infinite;
+}
+
+@keyframes outerRingPulse {
+    0%, 100% { 
+        opacity: 0.3;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% { 
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1.05);
+        border-color: rgba(147, 51, 234, 0.25);
+    }
+}
+
+/* Connection lines between numbers */
+.digit-connection {
+    position: absolute;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(0, 212, 255, 0.2),
+        transparent);
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.3;
+    animation: connectionGlow 4s ease-in-out infinite;
+}
+
+@keyframes connectionGlow {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.4; }
+}
+
+/* Background glow */
+.countdown-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle at 50% 50%,
+        rgba(0, 212, 255, 0.05) 0%,
+        transparent 60%
+    );
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .clock-ring:nth-child(1) { width: 250px; height: 250px; }
+    .clock-ring:nth-child(2) { width: 350px; height: 350px; }
+    .clock-ring:nth-child(3) { width: 450px; height: 450px; }
+    .clock-outer-ring { width: 500px; height: 500px; }
+    .time-digit { font-size: 1.5rem; }
+}
+
+@media (max-width: 768px) {
+    .clock-ring:nth-child(1) { width: 200px; height: 200px; }
+    .clock-ring:nth-child(2) { width: 300px; height: 300px; }
+    .clock-ring:nth-child(3) { width: 400px; height: 400px; }
+    .clock-outer-ring { width: 450px; height: 450px; }
+    .time-digit { font-size: 1.2rem; }
+}
+
+@media (max-width: 480px) {
+    .clock-ring { display: none; } /* Hide on very small screens */
+    .time-digit { font-size: 1rem; opacity: 0.3; }
+    .clock-outer-ring { width: 350px; height: 350px; }
+}
     </style>
 </head>
 <body>
@@ -1552,44 +1832,7 @@ font-family: "Monsieur La Doulaise", cursive;
         </div>
     </section>
 
-    <!--About us-->
-    <section id="about" class="about-section reveal">
-        <div class="container">
-            <h2 class="section-title">About Us</h2>
-
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        YAGNA DHRUVA 2026 is a flagship techno-cultural fest that brings together
-                        innovation, creativity, and competition. The event serves as a platform
-                        for students to showcase their technical skills, artistic talents, and
-                        collaborative spirit.
-                    </p>
-                    <p>
-                        With a diverse range of events, workshops, and competitions, YAGNA DHRUVA
-                        aims to inspire learning beyond classrooms while fostering teamwork,
-                        leadership, and excellence.
-                    </p>
-                </div>
-
-                <div class="about-stats">
-                    <div class="stat-card">
-                        <h3>10+</h3>
-                        <span>Events</span>
-                    </div>
-                    <div class="stat-card">
-                        <h3>500+</h3>
-                        <span>Participants</span>
-                    </div>
-                    <div class="stat-card">
-                        <h3>30+</h3>
-                        <span>Volunteers</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+   
     <!-- Footer -->
     <footer id="contact">
         <div class="footer-logo">YAGNA DHRUVA</div>
@@ -1672,6 +1915,16 @@ const timeLeft = Math.max(0, eventDate - now);
             document.getElementById('minutes').innerHTML = minutes.toString().padStart(2, '0');
             document.getElementById('seconds').innerHTML = seconds.toString().padStart(2, '0');
             
+             const elements = { days, hours, minutes, seconds };
+            for (const id in elements) {
+                const el = document.getElementById(id);
+                el.style.transform = 'rotateX(90deg)';
+                setTimeout(() => {
+                el.innerText = String(elements[id]).padStart(2, '0');
+                el.style.transform = 'rotateX(0deg)';
+            }, 150);
+        }
+
             // If countdown is over
             if (timeLeft < 0) {
                 clearInterval(countdownInterval);
@@ -1750,7 +2003,109 @@ window.addEventListener("scroll", () => {
 window.addEventListener("load", () => {
   document.body.classList.add("nav-loaded");
 });
+/*countdown background effect*/
+ function createClockBackground() {
+    const section = document.querySelector('.countdown-section');
+    if (!section) return;
+    
+    // Remove any existing background elements
+    const existingElements = section.querySelectorAll('.clock-ring, .clock-marker, .clock-center, .time-digit, .clock-outer-ring, .digit-connection');
+    existingElements.forEach(el => el.remove());
+    
+    // Create outer ring
+    const outerRing = document.createElement('div');
+    outerRing.className = 'clock-outer-ring';
+    section.appendChild(outerRing);
+    
+    // Create clock rings
+    for (let i = 0; i < 3; i++) {
+        const ring = document.createElement('div');
+        ring.className = 'clock-ring';
+        section.appendChild(ring);
+    }
+    
+    // Create hour markers (60 markers for minutes)
+    for (let i = 0; i < 60; i++) {
+        const marker = document.createElement('div');
+        marker.className = 'clock-marker';
+        const angle = (i * 6) * (Math.PI / 180);
+        const radius = 300;
+        const x = Math.cos(angle) * radius;
+        const y = Math.sin(angle) * radius;
+        marker.style.cssText = `
+            transform-origin: 0 0;
+            transform: translate(${x}px, ${y}px) rotate(${angle}rad);
+        `;
+        section.appendChild(marker);
+    }
+    
+    // Create center dot
+    const center = document.createElement('div');
+    center.className = 'clock-center';
+    section.appendChild(center);
+    
+    // Create floating time digits - MORE VISIBLE
+    const digits = ['12', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'];
+    digits.forEach((digit, i) => {
+        const elem = document.createElement('div');
+        elem.className = 'time-digit';
+        elem.textContent = digit;
+        elem.style.cssText = `
+            top: ${Math.random() * 100}%;
+            left: ${Math.random() * 100}%;
+            animation-duration: ${20 + Math.random() * 20}s;
+            animation-delay: ${i * 2}s;
+            font-size: ${1.5 + Math.random() * 0.8}rem;
+            color: hsla(${200 + Math.random() * 40}, 100%, 70%, ${0.5 + Math.random() * 0.3});
+            text-shadow: 0 0 15px rgba(${Math.random() > 0.5 ? '0,212,255' : '59,130,246'}, ${0.4 + Math.random() * 0.3});
+        `;
+        section.appendChild(elem);
+    });
+    
+    // Create connection lines between some digits
+    for (let i = 0; i < 8; i++) {
+        const line = document.createElement('div');
+        line.className = 'digit-connection';
+        const x1 = Math.random() * 80 + 10;
+        const y1 = Math.random() * 80 + 10;
+        const x2 = Math.random() * 80 + 10;
+        const y2 = Math.random() * 80 + 10;
+        
+        const length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+        const angle = Math.atan2(y2 - y1, x2 - x1) * (180 / Math.PI);
+        
+        line.style.cssText = `
+            top: ${y1}%;
+            left: ${x1}%;
+            width: ${length}vw;
+            transform: rotate(${angle}deg);
+            animation-delay: ${i * 0.5}s;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(${Math.random() > 0.5 ? '0,212,255' : '147,51,234'}, ${0.2 + Math.random() * 0.2}),
+                transparent);
+        `;
+        
+        section.appendChild(line);
+    }
+}
 
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // Wait a bit for other animations to finish
+    setTimeout(() => {
+        createClockBackground();
+    }, 1000);
+});
+
+// Recreate on resize for better positioning
+let resizeTimeout;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+        createClockBackground();
+    }, 250);
+});
     </script>
 </body>
 </html>
