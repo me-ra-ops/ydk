@@ -284,21 +284,21 @@ body.nav-loaded header {
           pointer-events: auto;
         }
         .hero::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 180px;
-  background: linear-gradient(
-    to bottom,
-    rgba(2,6,23,0) 0%,
-    rgba(2,6,23,0.6) 50%,
-    #0a1a3d 100%
-  );
-  pointer-events: none;
-  z-index: 8;
-}
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 180px;
+        background: linear-gradient(
+            to bottom,
+            rgba(2,6,23,0) 0%,
+            rgba(2,6,23,0.6) 50%,
+            #0a1a3d 100%
+        );
+        pointer-events: none;
+        z-index: 8;
+        }
 
 
         .title-container {
@@ -453,6 +453,9 @@ body.nav-loaded header {
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            font-family: 'Montserrat', sans-serif;  
+            font-weight: 800;                      
+            letter-spacing: 3px;  
             position: relative;
             display: inline-block;
             left: 50%;
@@ -523,14 +526,18 @@ body.nav-loaded header {
             font-size: 1.8rem;
             margin-bottom: 1rem;
             color: white;
+            font-family: 'Orbitron', sans-serif;  
+            font-weight: 600;                     
+            letter-spacing: 1.5px;
         }
 
         /* Stats Section */
         .stats-section {
-            padding: 5rem 5%;
-            background: var(--space-black);
-            position: relative;
+        padding: 5rem 5%;
+        position: relative;
+        background: linear-gradient(135deg, #020617 0%, #0b1a3a 50%, #020617 100%);
         }
+
 
         .stats-grid {
             display: grid;
@@ -566,9 +573,13 @@ body.nav-loaded header {
         }
 
         .stat-label {
-            font-size: 1.2rem;
-            color: var(--moonlight);
+        font-family: 'Inter', sans-serif;
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+        font-weight: 600;
+        color: #c7d2fe;
         }
+
 
         /* Countdown Timer */
         .countdown-section {
@@ -630,11 +641,11 @@ body.nav-loaded header {
         }
 
         .about-content {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 40px;
-  align-items: center;
-}
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        align-items: center;
+        }
 
 
         .about-text p {
@@ -1876,6 +1887,8 @@ font-family: "Monsieur La Doulaise", cursive;
     }
 }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+    
 </head>
 <body>
   <!-- Top Scroll Progress Bar -->
@@ -1959,12 +1972,12 @@ font-family: "Monsieur La Doulaise", cursive;
         <h2 class="section-title">EVENT HIGHLIGHTS</h2>
         <div class="highlights-grid">
             <div class="highlight-card" onclick="location.href='yagna.html'">
-  <i class="fas fa-microchip highlight-icon"></i>
+  <!-- <i class="fas fa-microchip highlight-icon"></i> -->
   <h3 class="highlight-title">YAGNA</h3>
 </div>
 
 <div class="highlight-card" onclick="location.href='dhruva.html'">
-  <i class="fas fa-palette highlight-icon"></i>
+  <!-- <i class="fas fa-palette highlight-icon"></i> -->
   <h3 class="highlight-title">DHRUVA</h3>
 </div>
 
@@ -2472,5 +2485,6 @@ if (window.location.hash) {
     }, 100);
 }
     </script>
+    
 </body>
 </html>
