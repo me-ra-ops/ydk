@@ -11,7 +11,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Bungee+Hairline&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Bungee+Hairline&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+
 
   <style>
     :root {
@@ -201,7 +202,13 @@ nav {
     /* ===== CULTURAL EVENTS ===== */
     .events-section {
       padding: 6rem 5%;
-      background: linear-gradient(180deg, #020617, #0f172a);
+      background: linear-gradient(
+    180deg, 
+    #020617 0%,    /* Space Black (matches Hero bottom) */
+    #081633 50%,   /* Deep Navy (matches Mandala mid-tones) */
+    #020617 100%   /* Back to Black for the footer transition */
+  );
+  position: relative;
     }
 
     .section-title {
@@ -348,6 +355,7 @@ nav {
     }
 
     .footer-text {
+      font-family:  "Inter Tight", sans-serif;;
       color: var(--moonlight);
       margin-bottom: 2rem;
     }
@@ -495,6 +503,7 @@ nav {
   }
 
   .footer-text {
+    font-family:  "Inter Tight", sans-serif;;
     font-size: 0.95rem;
   }
 }
@@ -531,7 +540,7 @@ nav {
 <!-- ===== HERO ===== -->
 <section class="hero">
   <div id="dhruva-particles"></div>
-  <!--<img src="bg1.jpeg" id="bg1">-->
+  <img src="mandala.jpg" id="bg1">
   <div class="hero-content">
     <h1 class="hero-title">DHRUVA</h1>
     <h2 class="hero-subtitle">Cultural Events</h2>
@@ -757,7 +766,7 @@ particlesJS("dhruva-particles", {
     },
 
 color: {
-  value: ["#0b3c5d", "#0f172a", "#1e293b", "#f2eae4"  ]
+  value: [ "#E0F7FA", "#00F2FF", "#f2eae4"  ]
 },
 
 
