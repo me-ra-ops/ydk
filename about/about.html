@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>About Section</title>
+
+<style>
+/* ========== GLOBAL ========== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* ========== ABOUT SECTION ========== */
+#about{
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      rgba(6, 7, 22, 0.85),
+      rgba(0,0,0,0.95)
+    ),
+    url("about (2).jpg") center / cover no-repeat;
+}
+
+
+/* ========== LEFT SLANTED PANEL WITH IMAGE ========== */
+.about-left-panel{
+  position:absolute;
+  top:0;
+  left:-300px;
+  width:1000px;
+  height:100%;
+  background:
+    linear-gradient(rgba(6, 46, 168, 0.75), rgba(2, 4, 10, 0.75)),
+    url("download (2).jpg") center / cover no-repeat;
+
+  transform: skewX(-20deg) translateX(-120%);
+  z-index:1;
+  animation: slideInLeft 1.2s ease-out forwards;
+}
+
+/* Panel animation */
+@keyframes slideInLeft{
+  from{
+    transform: skewX(-20deg) translateX(-120%);
+    opacity:0;
+  }
+  to{
+    transform: skewX(-20deg) translateX(0);
+    opacity:1;
+  }
+}
+
+/* ========== INNER CONTENT (NOW ANIMATED) ========== */
+.about-inner{
+  position:relative;
+  z-index:2;
+  padding:80px;
+  color:white;
+
+  transform: translateX(-80px);
+  opacity:0;
+  animation: contentSlideIn 1.2s ease-out forwards;
+  animation-delay: 0.15s; /* slight sync polish */
+}
+
+@keyframes contentSlideIn{
+  to{
+    transform: translateX(0);
+    opacity:1;
+  }
+}
+
+/* ========== BOXES ========== */
+.about-box-container{
+  position:relative;
+  width:200px;
+  height:200px;
+  margin-top:60px;
+}
+
+.about-box{
+  position:absolute;
+  width:250px;
+  height:250px;
+  border:3px solid #ffffff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:0.3s ease;
+  background: rgba(0,0,0,0.25);
+}
+
+.about-box span{
+  font-size:18px;
+  font-weight:bold;
+  letter-spacing:1px;
+}
+
+.box1{ top:0; left:150px; }
+.box2{ top:150px; left:50xp; }
+.box3{ top:180px; left:180px; }
+
+.about-box:hover{
+  transform:scale(1.12);
+  z-index:10;
+  box-shadow:0 15px 40px rgba(0,0,0,0.5);
+}
+
+/* ========== POPUP ========== */
+#about-popup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  display:none;
+  z-index:100;
+}
+
+.popup{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:white;
+  color:black;
+  padding:40px;
+  width:500px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.5);
+}
+
+.popup span{
+  position:absolute;
+  top:10px;
+  right:15px;
+  cursor:pointer;
+  font-size:20px;
+}
+
+/* ========== TYPOGRAPHY ========== */
+h1{
+  font-size:2.25rem;
+  line-height:1.3;
+  letter-spacing:0.5rem;
+}
+
+h2{
+  font-size:1.5rem;
+}
+
+@media (max-width:736px){
+  h1{ font-size:1.75rem; }
+}
+
+
+
+</style>
+</head>
+
+<body>
+
+
+
+<article id="about">
+
+  <div class="about-left-panel"></div>
+
+  <div class="about-inner">
+    <h1><strong>THE<br>14th<br>EDITION</strong></h1>
+
+    <div class="about-box-container">
+      <div class="about-box box1" onclick="openAboutPopup('Mission')">
+        <span>LBSITW</span>
+      </div>
+      <div class="about-box box2" onclick="openAboutPopup('Vision')">
+        <span>YANGNA DHRUVA</span>
+      </div>
+      <div class="about-box box3" onclick="openAboutPopup('Values')">
+        <span>THEME</span>
+      </div>
+    </div>
+  </div>
+  </article>
+
+   
+
+
+<!-- POPUP -->
+<div id="about-popup">
+  <div class="popup">
+    <span onclick="closeAboutPopup()">✕</span>
+    <h2 id="popup-title"></h2>
+    <p id="popup-content"></p>
+  </div>
+</div>
+
+<script>
+function openAboutPopup(type){
+  const text = {
+    Mission: "Our mission is to create meaningful impact through innovation.",
+    Vision: "Our vision is to shape the future with creativity and technology.",
+    Values: "Integrity, teamwork, and excellence define our values."
+  };
+  document.getElementById("popup-title").innerText = type;
+  document.getElementById("popup-content").innerText = text[type];
+  document.getElementById("about-popup").style.display = "block";
+}
+
+function closeAboutPopup(){
+  document.getElementById("about-popup").style.display = "none";
+}
+</script>
+
+</body>
+</html>
