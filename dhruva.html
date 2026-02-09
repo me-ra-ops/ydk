@@ -48,11 +48,26 @@ header {
   top: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(2, 6, 23, 0.9);
-  backdrop-filter: blur(12px);
-  padding: 1rem 5%;
-  border-bottom: 1px solid rgba(0, 212, 255, 0.25);
+
+  background: linear-gradient(
+    180deg,
+    rgba(15, 23, 42, 0.55),
+    rgba(2, 6, 23, 0.35)
+  );
+
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+
+  border-bottom: 1px solid rgba(0, 212, 255, 0.18);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.06),
+    0 8px 30px rgba(0,0,0,0.35);
+
+  padding: 1.2rem 5%;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 
 nav {
   display: flex;
@@ -118,7 +133,7 @@ nav {
 
   .nav-links {
     position: fixed;
-    top: 70px;
+    top: 72px;
     right: -100%;
     width: 320px;
     height: calc(100vh - 70px);
@@ -508,6 +523,189 @@ nav {
   }
 }
 
+/* ===== SMALL EVENT PREVIEW ===== */
+.preview-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  display: none;
+  z-index: 5000;
+}
+
+.preview-overlay.active {
+  display: block;
+}
+
+.event-preview {
+  font-family: "Inter Tight", sans-serif;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 380px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(10, 26, 61, 0.95),
+    rgba(8, 20, 50, 0.95)
+  );
+
+  border: 1px solid rgba(0, 212, 255, 0.35);
+  border-radius: 16px;
+
+  box-shadow:
+    0 0 25px rgba(0, 212, 255, 0.18),
+    0 25px 60px rgba(0, 0, 0, 0.65);
+
+  backdrop-filter: blur(12px);
+
+  display: none;
+  z-index: 6000;
+}
+
+.event-preview.active {
+  display: block;
+  animation: fadeInPreview 0.25s ease;
+}
+
+@keyframes fadeInPreview {
+  from { opacity: 0; transform: translate(-50%, -48%) scale(0.96); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+.preview-image img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+}
+
+.preview-content {
+  padding: 1.4rem;
+}
+
+.preview-content h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+.preview-content p {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: #cbd5e1;
+}
+
+.preview-meta {
+  margin: 1rem 0;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 0.8rem;
+}
+
+.preview-actions {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.preview-btn {
+  flex: 1;
+  text-align: center;
+  padding: 0.7rem 0;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.2s ease;
+  text-decoration: none;
+}
+
+.preview-btn.outline {
+  border: 1px solid #00d4ff;
+  color: #00d4ff;
+  background: transparent;
+}
+
+.preview-btn.filled {
+  background: #00d4ff;
+  color: #0a1a3d;
+  border: 1px solid #00d4ff;
+}
+
+.preview-btn:hover {
+  opacity: 0.85;
+}
+
+/* ===== LARGE DETAILS MODAL ===== */
+.event-details-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 7000;
+}
+
+.event-details-modal.active {
+  display: block;
+}
+
+.details-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(5px);
+}
+
+.details-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 750px;
+  max-width: 90%;
+  background: #0a1a3d;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.7);
+  animation: fadeInDetails 0.25s ease;
+}
+
+.details-close {
+  position: absolute;
+  top: 16px;
+  right: 22px;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.details-image img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.details-body {
+  padding: 2rem;
+}
+
+.details-description {
+  font-family: "Inter Tight", sans-serif;
+  font-style: italic;
+  color: #cbd5e1;
+  margin-bottom: 2rem;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #94a3b8;
+}
+
   </style>
 </head>
 
@@ -824,8 +1022,176 @@ color: {
   retina_detect: true
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+
+  const eventData = {
+    "Nritya Raga": {
+      date: "March 15, 2026",
+      time: "10:00 AM",
+      fee: "₹100",
+      teams: 30,
+      venue: "Main Stage",
+      teamSize: "Individual",
+      prize: "₹20,000",
+      description: "A classical solo dance competition celebrating tradition and grace."
+    },
+
+    "Battle of Bands": {
+      date: "March 16, 2026",
+      time: "6:00 PM",
+      fee: "₹300",
+      teams: 15,
+      venue: "Open Air Arena",
+      teamSize: "4–8 Members",
+      prize: "₹50,000",
+      description: "Live band showdown featuring high-energy performances."
+    },
+
+    "Footloose": {
+      date: "March 17, 2026",
+      time: "2:00 PM",
+      fee: "₹200",
+      teams: 25,
+      venue: "Cultural Stage",
+      teamSize: "5–12 Members",
+      prize: "₹40,000",
+      description: "Group dance competition with electrifying choreography."
+    },
+
+    "Ramp Rage": {
+      date: "March 18, 2026",
+      time: "7:00 PM",
+      fee: "₹500",
+      teams: 10,
+      venue: "Fashion Arena",
+      teamSize: "Team Entry",
+      prize: "₹60,000",
+      description: "High-glam fashion show featuring creativity and style."
+    }
+  };
+
+  const cards = document.querySelectorAll(".event-card");
+  const preview = document.getElementById("eventPreview");
+  const overlay = document.getElementById("previewOverlay");
+
+  const previewImg = document.getElementById("previewImg");
+  const previewTitle = document.getElementById("previewTitle");
+  const previewSubtitle = document.getElementById("previewSubtitle");
+  const previewRegistrations = document.getElementById("previewRegistrations");
+
+  const knowMoreBtn = document.getElementById("knowMoreBtn");
+  const registerBtn = document.getElementById("registerBtn");
+
+  const detailsModal = document.getElementById("eventDetailsModal");
+  const detailsOverlay = document.getElementById("detailsOverlay");
+  const detailsClose = document.getElementById("detailsClose");
+
+  const detailsImg = document.getElementById("detailsImg");
+  const detailsTitle = document.getElementById("detailsTitle");
+  const detailsDescription = document.getElementById("detailsDescription");
+
+  let currentEvent = null;
+
+  cards.forEach(card => {
+    card.addEventListener("click", () => {
+
+      const title = card.querySelector("h3").innerText;
+      const data = eventData[title];
+      if (!data) return;
+
+      currentEvent = data;
+
+      previewImg.src = card.querySelector("img").src;
+      previewTitle.innerText = title;
+      previewSubtitle.innerText = data.description;
+      previewRegistrations.innerText = data.teams;
+
+      overlay.classList.add("active");
+      preview.classList.add("active");
+    });
+  });
+
+  overlay.addEventListener("click", () => {
+    preview.classList.remove("active");
+    overlay.classList.remove("active");
+  });
+
+  registerBtn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    currentEvent.teams++;
+    previewRegistrations.innerText = currentEvent.teams;
+  });
+
+  knowMoreBtn.addEventListener("click", function (e) {
+    e.stopPropagation();
+
+    detailsImg.src = previewImg.src;
+    detailsTitle.innerText = previewTitle.innerText;
+    detailsDescription.innerText = currentEvent.description;
+
+    document.querySelector(".details-grid").innerHTML = `
+      <div><p class="label">Date</p><p>${currentEvent.date}</p></div>
+      <div><p class="label">Time</p><p>${currentEvent.time}</p></div>
+      <div><p class="label">Venue</p><p>${currentEvent.venue}</p></div>
+      <div><p class="label">Team Size</p><p>${currentEvent.teamSize}</p></div>
+      <div><p class="label">Registration Fee</p><p>${currentEvent.fee}</p></div>
+      <div><p class="label">Prize Pool</p><p>${currentEvent.prize}</p></div>
+    `;
+
+    detailsModal.classList.add("active");
+  });
+
+  detailsOverlay.addEventListener("click", () => {
+    detailsModal.classList.remove("active");
+  });
+
+  detailsClose.addEventListener("click", () => {
+    detailsModal.classList.remove("active");
+  });
+
+});
 
 </script>
+<div class="preview-overlay" id="previewOverlay"></div>
+
+<div class="event-preview" id="eventPreview">
+  <div class="preview-image">
+    <img id="previewImg" src="" alt="">
+  </div>
+
+  <div class="preview-content">
+    <h3 id="previewTitle"></h3>
+    <p id="previewSubtitle"></p>
+
+    <div class="preview-meta">
+      <span id="previewRegistrations"></span> teams registered
+    </div>
+
+    <div class="preview-actions">
+      <button id="knowMoreBtn" class="preview-btn outline">Know More</button>
+      <button id="registerBtn" class="preview-btn filled">Register</button>
+    </div>
+  </div>
+</div>
+
+<div class="event-details-modal" id="eventDetailsModal">
+  <div class="details-overlay" id="detailsOverlay"></div>
+
+  <div class="details-content">
+    <span class="details-close" id="detailsClose">&times;</span>
+
+    <div class="details-image">
+      <img id="detailsImg" src="">
+    </div>
+
+    <div class="details-body">
+      <h2 id="detailsTitle"></h2>
+      <p class="details-description" id="detailsDescription"></p>
+
+      <div class="details-grid"></div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
